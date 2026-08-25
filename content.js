@@ -159,7 +159,7 @@ function tryInjectNoteButton() {
 
     if (attempts >= maxAttempts) {
       debugLog(
-        "[YouTube Digest Content] Player container not found after retries, giving up",
+        "[Bilibili Digest Content] Player container not found after retries, giving up",
       );
       if (ytdNoteButtonRetryTimer) {
         clearInterval(ytdNoteButtonRetryTimer);

@@ -28,7 +28,7 @@ const debugLog = (...args) => {
 chrome.storage.local
   .setAccessLevel({ accessLevel: "TRUSTED_CONTEXTS" })
   .catch((error) =>
-    console.warn("[YouTube Digest] Could not restrict storage access:", error),
+    console.warn("[Bilibili Digest] Could not restrict storage access:", error),
   );
 
 async function getSettings() {
@@ -956,7 +956,7 @@ async function handleFetchTranscript(videoId, videoUrl = "") {
       return {
         success: false,
         error: "NO_SUPADATA_KEY",
-        message: "Supadata API key not configured. Open YouTube Digest Settings.",
+        message: "Supadata API key not configured. Open Bilibili Digest Settings.",
       };
     }
 
@@ -1000,7 +1000,7 @@ async function handleFetchTranscript(videoId, videoUrl = "") {
         return {
           success: false,
           error: "INVALID_SUPADATA_KEY",
-          message: "Your Supadata API key is invalid. Open YouTube Digest Settings.",
+          message: "Your Supadata API key is invalid. Open Bilibili Digest Settings.",
         };
       }
       if (response.status === 404) {

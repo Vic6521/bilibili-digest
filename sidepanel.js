@@ -551,7 +551,7 @@ async function checkCurrentTab() {
       if (tabs[0]) tab = tabs[0];
     }
 
-    debugLog("[YouTube Digest Panel] Found tab:", tab?.id, tab?.url);
+    debugLog("[Bilibili Digest Panel] Found tab:", tab?.id, tab?.url);
 
       if (!tab?.url) {
       showState("welcome");
@@ -1039,7 +1039,7 @@ function exportTranscript() {
 
   exportText += `TRANSCRIPT:\n\n${transcriptContent}\n`;
   exportText += `\n${"—".repeat(60)}\n`;
-  exportText += `Exported by YouTube Digest\n`;
+  exportText += `Exported by Bilibili Digest\n`;
 
   const filename = `${sanitizeFilename(currentVideoTitle)}-transcript.txt`;
   downloadTextFile(exportText, filename);

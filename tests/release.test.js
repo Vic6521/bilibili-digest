@@ -45,13 +45,13 @@ test("release copy documents current scope without em dashes", () => {
   assert.match(readme, /^# Bilibili Digest$/m);
   assert.match(
     readme,
-    /Turn every YouTube video into a resource for deep learning\./,
+    /Turn Bilibili and YouTube videos into learning resources\./,
   );
   assert.doesNotMatch(readme, /before deciding how much of it to watch/i);
   assert.match(readme, /^## Install with your coding agent$/m);
   assert.match(
     readme,
-    /permanent folder I choose[\s\S]*tell me its exact full path[\s\S]*If I need a suggestion during this first installation[\s\S]*`~\/Documents\/youtube-digest`[\s\S]*`%USERPROFILE%\\Documents\\youtube-digest`[\s\S]*do not assume either path/,
+    /permanent folder I choose[\s\S]*tell me its exact full path[\s\S]*If I need a suggestion during this first installation[\s\S]*`~\/Documents\/bilibili-digest`[\s\S]*`%USERPROFILE%\\Documents\\bilibili-digest`[\s\S]*do not assume either path/,
   );
   assert.match(
     readme,
@@ -68,11 +68,11 @@ test("release copy documents current scope without em dashes", () => {
   assert.match(readme, /upstream issues and pull requests are not accepted/i);
   assert.doesNotMatch(readme, /^## Contributing$/m);
   assert.match(chineseReadme, /^# Bilibili Digest$/m);
-  assert.match(chineseReadme, /把每个 YouTube 视频变成一份可以深入学习的资料/);
+  assert.match(chineseReadme, /把 B 站和 YouTube 视频变成一份可以深入学习的资料/);
   assert.match(chineseReadme, /^## 让你的编程 Agent 帮你安装$/m);
   assert.match(
     chineseReadme,
-    /我选择的长期保留文件夹[\s\S]*告诉我准确的完整路径[\s\S]*第一次安装时需要位置建议[\s\S]*`~\/Documents\/youtube-digest`[\s\S]*`%USERPROFILE%\\Documents\\youtube-digest`[\s\S]*不要假设我一定使用这些路径/,
+    /我选择的长期保留文件夹[\s\S]*告诉我准确的完整路径[\s\S]*第一次安装时需要位置建议[\s\S]*`~\/Documents\/bilibili-digest`[\s\S]*`%USERPROFILE%\\Documents\\bilibili-digest`[\s\S]*不要假设我一定使用这些路径/,
   );
   assert.match(
     chineseReadme,
@@ -167,11 +167,11 @@ test("release copy documents current scope without em dashes", () => {
   assert.match(readme, /vocabulary notebook/i);
   assert.match(
     readme,
-    /first open the exact YouTube Digest project folder that Chrome loaded through \*\*Load unpacked\*\* in your coding agent/,
+    /first open the exact Bilibili Digest project folder that Chrome loaded through \*\*Load unpacked\*\* in your coding agent/,
   );
   assert.match(
     chineseReadme,
-    /先在编程 Agent 中打开 Chrome 通过“加载已解压的扩展程序”使用的那个准确的 YouTube Digest 项目文件夹/,
+    /先在编程 Agent 中打开 Chrome 通过“加载已解压的扩展程序”使用的那个准确的 Bilibili Digest 项目文件夹/,
   );
 
   const publishedDocs = [
@@ -184,8 +184,8 @@ test("release copy documents current scope without em dashes", () => {
   assert.doesNotMatch(publishedDocs, /optional custom-origin/i);
   assert.doesNotMatch(publishedDocs, /chosen AI provider/i);
   assert.doesNotMatch(publishedDocs, /configure a different OpenAI-compatible/i);
-  assert.match(readme, /published version supports DeepSeek V4 Flash as its only AI provider/i);
-  assert.match(chineseReadme, /发布版本只支持 DeepSeek V4 Flash/);
+  assert.match(readme, /published version routes text AI tasks to DeepSeek V4 Flash and screenshot-aware tasks to Qwen VL Plus/i);
+  assert.match(chineseReadme, /发布版本把文本 AI 任务路由到 DeepSeek V4 Flash/);
 });
 
 test("notes filters preserve selected contrast and expose pressed state", () => {

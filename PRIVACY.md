@@ -2,82 +2,78 @@
 
 Effective: July 28, 2026
 
-YouTube Digest is a GitHub-only, bring-your-own-key Chrome extension. It has no YouTube Digest account, developer-operated backend, analytics, advertising, or telemetry.
+Bilibili Digest is a GitHub-only, bring-your-own-key Chrome extension. It has no Bilibili Digest account, developer-operated backend, analytics, advertising, or telemetry.
 
 ## Data the extension handles
 
-Depending on the feature you use, YouTube Digest handles:
+Depending on the feature you use, Bilibili Digest handles:
 
-- the canonical URL and video ID of the active YouTube video;
+- the canonical URL and video ID of the active Bilibili or YouTube video;
 - transcript text and timestamps;
 - video metadata such as title, channel, description, and duration;
 - text you select in the transcript and nearby transcript context;
 - transcript context around a timestamped note;
+- screenshots you take of the video frame when saving a note;
 - content you ask to translate;
 - notes you save;
-- Supadata and DeepSeek configuration, including API keys; and
+- Supadata, DeepSeek, and Qwen configuration, including API keys; and
 - cached transcript, digest, and translation results.
 
 ## Where data goes
 
+### Bilibili subtitle API
+
+On a Bilibili video page, Bilibili Digest requests that video's subtitle JSON directly from Bilibili's subtitle API (`aisubtitle.hdslb.com`) using the video's own credentials in the active tab. It does not send your API keys to Bilibili. Bilibili may collect data under its own terms and privacy policy.
+
 ### Supadata
 
-YouTube Digest sends the canonical YouTube video URL to `https://api.supadata.ai` with your Supadata API key. Supadata returns the transcript and timestamps. A Supadata key is required for transcript retrieval.
+Bilibili Digest sends the canonical YouTube video URL to `https://api.supadata.ai` with your Supadata API key when you view a YouTube transcript. It uses the same fallback path when a Bilibili video has no native subtitle track. Supadata returns the transcript and timestamps. A Supadata key is required for YouTube transcript retrieval.
 
 ### DeepSeek
 
-The published version sends AI feature content to DeepSeek V4 Flash at `https://api.deepseek.com`:
+The published version sends AI text feature content to DeepSeek V4 Flash at `https://api.deepseek.com`:
 
 - transcript plus relevant title, channel, description, or duration for an overview;
 - selected text plus nearby transcript context for an explanation;
-- small semantic transcript batches currently needed for progressive Chinese
-  translation, or requested overview or explanation content;
+- small semantic transcript batches currently needed for progressive Chinese translation, or requested overview or explanation content; and
 - nearby transcript context and video metadata when polishing a saved note.
 
 The endpoint and `deepseek-v4-flash` model are fixed in the published Settings page. You provide one DeepSeek API key. To use another provider or model, you must adapt your own local source copy and its permissions. The Settings page provides a coding-agent prompt for that purpose and warns you never to include an API key in the prompt or chat.
 
-Requests go directly from the extension to Supadata or DeepSeek. They are authenticated with the keys you supply. YouTube Digest's developer does not proxy or receive these requests.
+### Qwen (DashScope)
 
-Those services process data under their own terms, privacy policies, retention practices, and account settings. Do not send confidential, personal, or regulated content unless their terms and your obligations permit it.
+The published version sends screenshot-aware task content to Qwen VL Plus at `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions` with your Qwen API key. These tasks include summarizing a saved note screenshot and explaining the current video frame. The endpoint and `qwen-vl-plus` model are fixed in the published Settings page. Without a Qwen key, vision tasks are unavailable and the rest of the extension keeps working.
 
-## Local storage and retention
+Requests go directly from the extension to Bilibili, Supadata, DeepSeek, or Qwen. They are authenticated with the keys you supply. Bilibili Digest's developer does not proxy or receive transcript, screenshot, or AI request content.
 
-YouTube Digest uses Chrome's local extension storage, not a YouTube Digest cloud service.
+## To remove data
 
-- Supadata and DeepSeek settings and API keys remain on the device in Chrome's extension storage.
-- Saved notes remain until you delete them or remove/clear the extension's data. The extension keeps up to 100 notes.
-- Recent transcript, digest, and per-segment translation cache entries are stored
-  locally. The cache is limited to 20 videos, and entries older than 30 days are
-  removed when the side panel opens.
+- Delete individual saved notes in Bilibili Digest.
+- Use the Options page to clear cached digests, delete all notes, or reset all extension data.
+- Remove the extension or clear its stored data from Chrome to delete all local settings, keys, notes, screenshots, and cache entries.
+- Revoke keys in the Supadata, DeepSeek, or DashScope console to stop their future use.
 
-Chrome extension storage is not a password vault. Anyone with sufficient access to your browser profile or device may be able to recover locally stored keys or content. Use scoped keys where providers support them, set spending limits, and rotate or revoke a key if the device or browser profile is compromised.
-
-To remove data:
-
-- delete individual saved notes in YouTube Digest;
-- use the Options page to clear cached digests, delete all notes, or reset all extension data;
-- remove the extension or clear its stored data from Chrome to delete all local settings, keys, notes, and cache entries; and
-- revoke keys in the Supadata or DeepSeek dashboard to stop their future use.
-
-Clearing local data does not delete information already processed or retained by Supadata or DeepSeek. Use each service's controls for service-side requests.
+Clearing local data does not delete information already processed or retained by Bilibili, Supadata, DeepSeek, or Qwen. Use each service's controls for service-side requests.
 
 ## Permissions
 
-YouTube Digest uses Chrome permissions for these purposes:
+Bilibili Digest uses Chrome permissions for these purposes:
 
-- `sidePanel`: display the YouTube Digest interface beside YouTube.
-- `storage`: store settings, keys, notes, and cached results locally.
-- `tabs`: identify and interact with the active YouTube tab.
-- `scripting`: coordinate the extension's YouTube page controls.
+- `sidePanel`: display the Bilibili Digest interface beside Bilibili and YouTube pages.
+- `storage`: store settings, keys, notes, screenshots, and cached results locally.
+- `tabs`: identify and interact with the active Bilibili or YouTube tab.
+- `scripting`: coordinate the extension's video page controls.
+- Bilibili host access: read the active video's URL and metadata, and fetch its native subtitle track.
 - YouTube host access: read the active video's URL and metadata and provide timestamp controls.
 - Supadata host access: retrieve transcripts.
 - DeepSeek host access: provide AI overviews, explanations, translation, and note polishing through DeepSeek V4 Flash.
+- DashScope host access: provide screenshot summaries and frame explanations through Qwen VL Plus.
 
-YouTube Digest does not use these permissions to monitor general browsing activity.
+Bilibili Digest does not use these permissions to monitor general browsing activity.
 
 ## No sale or advertising use
 
-YouTube Digest does not sell personal information, build advertising profiles, or share data with data brokers. It does not include analytics SDKs.
+Bilibili Digest does not sell personal information, build advertising profiles, or share data with data brokers. It does not include analytics SDKs.
 
 ## Changes
 

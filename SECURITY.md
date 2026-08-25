@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-YouTube Digest is a small GitHub-only project. Security fixes are made on the latest code on `main` and, when releases are published, the latest GitHub release. Older snapshots are not supported.
+Bilibili Digest is a small GitHub-only project. Security fixes are made on the latest code on `main` and, when releases are published, the latest GitHub release. Older snapshots are not supported.
 
 ## Report a vulnerability privately
 
@@ -25,12 +25,12 @@ There is no guaranteed response time or bug-bounty program. Please allow a reaso
 Examples include:
 
 - API keys or private content included in source, logs, screenshots, or release ZIPs;
-- requests to network origins outside the documented YouTube, Supadata, and DeepSeek hosts;
+- requests to network origins outside the documented Bilibili, YouTube, Supadata, DeepSeek, and DashScope hosts;
 - script or HTML injection through transcript, metadata, service errors, or model output;
-- access to browsing data outside the documented YouTube scope;
-- unintended transmission of notes, transcripts, or credentials;
+- access to browsing data outside the documented Bilibili and YouTube scope;
+- unintended transmission of notes, transcripts, screenshots, or credentials;
 - a dependency or release-workflow compromise; and
-- bypasses of local data deletion or DeepSeek configuration controls.
+- bypasses of local data deletion or AI provider configuration controls.
 
 ## User security guidance
 

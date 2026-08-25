@@ -139,7 +139,7 @@ test("customization guidance is concise and has a visible placeholder reminder",
   );
   assert.equal(
     options.translate("en", "customizationStepFolder"),
-    "Open the extracted YouTube Digest project folder in your coding agent.",
+    "Open the extracted Bilibili Digest project folder in your coding agent.",
   );
   assert.equal(
     options.translate("zh-CN", "customizationStepFolder"),

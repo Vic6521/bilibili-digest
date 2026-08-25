@@ -15,12 +15,12 @@ const YTD_OPTIONS = (() => {
       providerBadge: "Default in this version",
       deepseekApiKeyLabel: "DeepSeek API key",
       deepseekHelp:
-        "YouTube Digest uses DeepSeek V4 Flash for overviews, explanations, translation, and note polishing. ",
+        "Bilibili Digest uses DeepSeek V4 Flash for overviews, explanations, translation, and note polishing. ",
       deepseekLink: "Create a DeepSeek API key",
       deepseekHelpSuffix: ".",
       qwenApiKeyLabel: "Qwen API key",
       qwenHelp:
-        "YouTube Digest uses Qwen VL Plus for screenshot understanding and visual summaries. ",
+        "Bilibili Digest uses Qwen VL Plus for screenshot understanding and visual summaries. ",
       qwenLink: "Create a Qwen API key",
       qwenHelpSuffix: ".",
       privacyNote:
@@ -33,7 +33,7 @@ const YTD_OPTIONS = (() => {
       customizationIntro:
         "You can edit the prompt directly. Complete these three steps before copying:",
       customizationStepFolder:
-        "Open the extracted YouTube Digest project folder in your coding agent.",
+        "Open the extracted Bilibili Digest project folder in your coding agent.",
       customizationStepReplace:
         "Replace [PROVIDER] and [MODEL] with the service and model you want to use.",
       customizationStepKeys:
@@ -43,7 +43,7 @@ const YTD_OPTIONS = (() => {
       customizationReminder:
         "Before copying, replace [PROVIDER] and [MODEL] with the provider and model you want to use.",
       customizationPrompt:
-        "Customize this local YouTube Digest workspace to use [PROVIDER] with [MODEL]. Work only in the current workspace. Before editing, verify that it contains manifest.json and that the manifest name is YouTube Digest. If verification fails, stop and ask me to open the extracted YouTube Digest project folder in my coding agent. Do not search other folders, edit a guessed copy, assume an installation path, or claim Chrome can reveal the absolute OS source path. Update the provider's API endpoint, request format, and minimum Chrome host permissions. Preserve bring-your-own-key and local Chrome storage. Never put API keys in source code, commits, logs, screenshots, this prompt, or chat; after the code is ready, tell me where to enter the key myself. Keep DeepSeek-only request fields and retry behavior isolated to DeepSeek. Handle provider-specific rules separately so one provider does not affect another. Update README.md, README.zh-CN.md, PRIVACY.md, SECURITY.md, and tests. Run npm test, npm run check, and npm run package. Then explain how to reload the unpacked extension and test it on a real YouTube video.",
+        "Customize this local Bilibili Digest workspace to use [PROVIDER] with [MODEL]. Work only in the current workspace. Before editing, verify that it contains manifest.json and that the manifest name is Bilibili Digest. If verification fails, stop and ask me to open the extracted Bilibili Digest project folder in my coding agent. Do not search other folders, edit a guessed copy, assume an installation path, or claim Chrome can reveal the absolute OS source path. Update the provider's API endpoint, request format, and minimum Chrome host permissions. Preserve bring-your-own-key and local Chrome storage. Never put API keys in source code, commits, logs, screenshots, this prompt, or chat; after the code is ready, tell me where to enter the key myself. Keep DeepSeek-only request fields and retry behavior isolated to DeepSeek. Handle provider-specific rules separately so one provider does not affect another. Update README.md, README.zh-CN.md, PRIVACY.md, SECURITY.md, and tests. Run npm test, npm run check, and npm run package. Then explain how to reload the unpacked extension and test it on a real YouTube video.",
       copyCustomizationPrompt: "Copy edited prompt",
       localData: "Local data",
       localDataHelp:
@@ -58,7 +58,7 @@ const YTD_OPTIONS = (() => {
       saving: "Saving…",
       addDeepseekKey: "Add a DeepSeek API key.",
       addQwenKey: "Add a Qwen API key.",
-      saved: "Saved. Reopen YouTube Digest to use these settings.",
+      saved: "Saved. Reopen Bilibili Digest to use these settings.",
       saveFailed: "Could not save settings. Please try again.",
       copying: "Copying…",
       promptCopied: "Edited prompt copied.",
