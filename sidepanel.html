@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilibili Digest</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <!-- Note: the panel's own "哔哩哔哩 Digest" title is shown by Chrome's side-panel
+         title bar, so we don't repeat a logo here. -->
+    <div class="header">
+      <div class="header-top">
+        <!-- Video info -->
+        <div class="video-info" id="videoInfo" style="display: none">
+          <div class="video-title" id="videoTitle"></div>
+          <div class="video-channel" id="videoChannel"></div>
+        </div>
+        <button
+          class="settings-btn"
+          id="settingsBtn"
+          type="button"
+          title="Open Bilibili Digest settings"
+          aria-label="Open Bilibili Digest settings"
+        >
+          Settings
+        </button>
+      </div>
+
+      <!-- Tab navigation -->
+      <div class="tabs" id="tabsNav" style="display: none">
+        <button class="tab active" data-tab="transcript">字幕</button>
+        <button class="tab" data-tab="overview">总览</button>
+        <button class="tab" data-tab="notes">笔记</button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content" id="contentArea">
+      <!-- WELCOME STATE -->
+      <div id="welcomeState" class="welcome-container">
+        <div class="welcome-icon">&#9655;</div>
+        <div class="welcome-title">开始整理笔记</div>
+        <div class="welcome-desc">
+          打开 B 站或 YouTube 视频后，点击扩展图标即可生成学习笔记。
+        </div>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div id="loadingState" style="display: none">
+        <div class="loading-container">
+          <div class="loading-bar"></div>
+          <div class="loading-text" id="loadingText">正在提取字幕</div>
+          <div class="loading-subtext" id="loadingSubtext">
+            正在从视频中提取字幕...
+          </div>
+        </div>
+      </div>
+
+      <!-- ERROR STATE -->
+      <div id="errorState" style="display: none">
+        <div class="error-container">
+          <div class="error-icon">&#9888;</div>
+          <div class="error-title" id="errorTitle">出错了</div>
+          <div class="error-message" id="errorMessage">
+            发生了一些错误。
+          </div>
+          <button class="error-btn" id="errorBtn">重试</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="resultsState" style="display: none">
+        <!-- TAB: Transcript (default - no LLM required) -->
+        <div class="tab-panel active" data-panel="transcript">
+          <div class="section">
+            <div class="section-header transcript-section-header">
+              <div class="transcript-header-main">
+                <div class="section-title-wrap">
+                  <div class="section-title">完整字幕</div>
+                </div>
+                <div
+                  class="transcript-mode-control"
+                  id="transcriptModeControl"
+                  role="group"
+                  aria-label="Transcript language"
+                >
+                  <button
+                    class="transcript-mode-btn active"
+                    type="button"
+                    data-transcript-mode="original"
+                    aria-pressed="true"
+                  >原文</button>
+                  <button
+                    class="transcript-mode-btn"
+                    type="button"
+                    data-transcript-mode="zh"
+                    aria-pressed="false"
+                  >中文</button>
+                  <button
+                    class="transcript-mode-btn"
+                    type="button"
+                    data-transcript-mode="bilingual"
+                    aria-pressed="false"
+                  >双语</button>
+                  <span
+                    class="translation-spinner"
+                    id="langSpinner"
+                    aria-label="Translating"
+                  ></span>
+                </div>
+              </div>
+              <div class="transcript-actions">
+                <button class="enhance-btn" id="reloadTranscriptBtn" title="重新加载当前字幕">↻ 刷新</button>
+                <button class="enhance-btn" id="copyTranscriptBtn">复制</button>
+                <button class="enhance-btn" id="exportTranscriptBtn">
+                  导出
+                </button>
+              </div>
+            </div>
+            <div id="transcriptList"></div>
+          </div>
+        </div>
+
+        <!-- TAB: Overview (chapters + key quotes) - requires LLM -->
+        <div class="tab-panel" data-panel="overview">
+          <!-- Chapters -->
+          <div class="section">
+            <div class="section-title">章节</div>
+            <ul class="chapter-list" id="chapterList">
+              <li
+                class="chapter-item"
+                style="
+                  color: var(--text-muted);
+                  cursor: default;
+                  border-color: var(--border);
+                "
+              >
+                章节会显示在这里
+              </li>
+            </ul>
+          </div>
+
+          <!-- 关键引用 -->
+          <div class="section">
+            <div class="section-title">关键引用</div>
+            <div id="quotesList">
+              <div
+                class="quote-item"
+                style="
+                  color: var(--text-muted);
+                  border-left-color: var(--border);
+                  cursor: default;
+                "
+              >
+                <div class="quote-text" style="font-style: normal">
+                  切换到这一栏时会提取关键引用...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Notes -->
+        <div class="tab-panel" data-panel="notes">
+          <div class="section">
+            <div class="section-header">
+              <div class="section-title">课程笔记</div>
+              <div class="notes-filter">
+                <button
+                  class="enhance-btn"
+                  id="notesRefreshBtn"
+                  aria-pressed="false"
+                  title="刷新笔记"
+                >
+                  ↻ 刷新
+                </button>
+                <button
+                  class="enhance-btn"
+                  id="notesExportPdfBtn"
+                  aria-pressed="false"
+                  title="导出笔记为 PDF"
+                >
+                  ⬇ 导出 PDF
+                </button>
+                <button
+                  class="enhance-btn active"
+                  id="notesFilterThis"
+                  aria-pressed="true"
+                >
+                  当前视频
+                </button>
+                <button
+                  class="enhance-btn"
+                  id="notesFilterAll"
+                  aria-pressed="false"
+                >
+                  全部笔记
+                </button>
+              </div>
+            </div>
+            <p class="notes-intro" id="notesIntro">
+              把鼠标移到视频上，点击 📝 笔记 按钮保存时间戳笔记；也可以在视频聚焦时按下 "n" 键。
+            </p>
+            <div id="notesList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-scroll follow button — appears when user scrolls away from playback position -->
+    <button
+      class="follow-playback-btn"
+      id="followPlaybackBtn"
+      style="display: none"
+    >
+      跟随播放
+    </button>
+
+    <script src="settings.js"></script>
+    <script src="vendor/html2canvas.min.js"></script>
+    <script src="vendor/jspdf.umd.min.js"></script>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
