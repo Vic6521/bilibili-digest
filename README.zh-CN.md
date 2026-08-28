@@ -107,20 +107,22 @@ Bilibili Digest 以非思考模式发送每次 DeepSeek 请求，以获得快速
 ## 使用 Bilibili Digest
 <img width="782" height="527" alt="bili操作流程" src="https://github.com/user-attachments/assets/c89cb47d-5a56-4982-891d-20338ad90865" />
 
-1.打开 Bilibili 视频。
-2.点击浏览器扩展图标，打开侧边栏。
-3.查看视频字幕，按需切换原文、中文或双语模式。
-4.切换到“总览”，查看 AI 生成的章节和重点内容。
-5.在视频页面点击 Note 保存时间点和截图。
-6.在“笔记”页面查看、编辑或识别截图文字。
-7.选择“当前视频”或“全部笔记”。
-8.点击“导出 PDF”，文件会自动下载到本地。
-9.快捷操作：
-按 N：保存当前视频笔记
-点击时间点：跳转到视频对应位置
-Ctrl + Enter：快速保存新知识点
+1. 打开 Bilibili 或 YouTube 视频。
+2. 点击浏览器扩展图标，打开 Bilibili Digest 侧边栏。
+3. 查看视频字幕，可切换原文、中文或双语模式。
+4. 切换到“总览”页面，查看 AI 生成的章节和重点内容。
+5. 在视频页面点击“Note”按钮，保存当前时间点和视频截图。
+6. 打开“笔记”页面，查看、编辑笔记或识别截图中的板书文字。
+7. 选择“当前视频”或“全部笔记”查看笔记内容。
+8. 点击“导出 PDF”，笔记文件会自动下载到本地。
+
+快捷操作：
+- 按 N：保存当前视频笔记
+- 点击时间点：跳转到视频对应位置
+- 按 Ctrl + Enter：快速保存新知识点
 ## 当前可用的功能
-<img width="1875" height="4137" alt="NotebookLM Mind Map (9)" src="https://github.com/user-attachments/assets/f7503520-d1e8-4684-85cb-6daaf9c6bdaa" />
+<img width="760" height="552" alt="diagram-2026-08-28" src="https://github.com/user-attachments/assets/e5bffd6e-dbd8-4e79-bfe2-46b7e9ae4d8d" />
+
 
 
 Bilibili Digest 是一款 AI 视频学习助手，支持 Bilibili 和 YouTube 视频内容整理。
