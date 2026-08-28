@@ -1,4 +1,4 @@
-# Bilibili Digest
+<img width="782" height="527" alt="bili操作流程" src="https://github.com/user-attachments/assets/51f5b49c-236a-4707-b470-3ad0c0a45afa" /><img width="782" height="527" alt="bili操作流程" src="https://github.com/user-attachments/assets/5873f017-2233-452d-91e8-52400af204f3" /># Bilibili Digest
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -105,6 +105,8 @@ Bilibili Digest 以非思考模式发送每次 DeepSeek 请求，以获得快速
 密钥和设置保存在 Chrome 本地扩展存储中。发布版本不包含也不会使用 `config.js`。
 
 ## 使用 Bilibili Digest
+<img width="1866" height="1077" alt="image" src="https://github.com/user-attachments/assets/c61b900b-a5c7-4cc2-922e-de9acb4053c1" />
+
 1.打开 Bilibili 视频。
 2.点击浏览器扩展图标，打开侧边栏。
 3.查看视频字幕，按需切换原文、中文或双语模式。
@@ -118,6 +120,7 @@ Bilibili Digest 以非思考模式发送每次 DeepSeek 请求，以获得快速
 点击时间点：跳转到视频对应位置
 Ctrl + Enter：快速保存新知识点
 ## 当前可用的功能
+![Uploading NotebookLM Mind Map (9).png…]()
 
 Bilibili Digest 是一款 AI 视频学习助手，支持 Bilibili 和 YouTube 视频内容整理。
 
