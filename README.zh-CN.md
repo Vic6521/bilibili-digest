@@ -1,3 +1,6 @@
+# Bilibili Digest
+
+[English](README.md) | [简体中文](README.zh-CN.md)
 
 把 B 站和 YouTube 视频变成一份可以深入学习的资料。Bilibili Digest 把字幕、双语翻译、AI 概览、内容讲解和时间戳笔记放进同一个 Chrome 侧边栏，让你可以持续学习视频中的知识和语言，同时不丢失原视频上下文。
 
