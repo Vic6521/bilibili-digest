@@ -140,6 +140,9 @@ Bilibili Digest 是一款 AI 视频学习助手，支持 Bilibili 和 YouTube �
 
 产品核心价值：
 将视频内容快速转化为结构化、可编辑、可复习的学习资料。
+<img width="738" height="912" alt="image" src="https://github.com/user-attachments/assets/f23420ed-44c9-4cd1-b53a-737937d6bbb2" />
+
+
 ## Supadata 免费额度与请求成本
 
 截至 2026 年 8 月 9 日，[Supadata 定价页面](https://supadata.ai/pricing)显示免费套餐每月 **100 个额度**，无需信用卡。未用完的额度不会结转。Supadata 定价可能变化，请在依赖这些数字前查看当前页面。
