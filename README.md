@@ -12,6 +12,8 @@ Turn Bilibili and YouTube videos into learning resources. Bilibili Digest brings
 - Keep control of your data with your own API keys, local Chrome storage, and no analytics or telemetry.
 
 Bilibili Digest is a bring-your-own-key project installed locally from GitHub. It is not available through the Chrome Web Store, does not include API credits, and does not run a developer-operated server.
+![Uploading image.png…]()
+
 
 ## Install with your coding agent
 
